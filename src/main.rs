@@ -3,6 +3,31 @@
 // Process: search in list, remove
 // Outputs: the updated employee list
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_remove_employee() {
+        let employees: Vec<&str> = vec![
+            "John Smith",
+            "Jackie Jackson",
+            "Chris Jones",
+            "Amanda Cullen",
+            "Jeremy Goodwin",
+        ];
+
+        assert_eq!(
+            remove_employee(employees, "John Smith"),
+            vec![
+                "Jackie Jackson",
+                "Chris Jones",
+                "Amanda Cullen",
+                "Jeremy Goodwin"
+            ]
+        );
+    }
+}
 fn main() {
     println!("Hello, world!");
 }
