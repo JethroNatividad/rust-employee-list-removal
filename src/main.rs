@@ -17,7 +17,7 @@ fn remove_employee(
             .cloned()
             .collect())
     } else {
-        Err("String not found in vector")
+        Err("Employee not found.")
     }
 }
 
@@ -47,7 +47,7 @@ mod tests {
 
         assert_eq!(
             remove_employee(employees, "Nonexistent Employee".to_string()),
-            Err("String not found in vector")
+            Err("Employee not found.")
         );
     }
 }
