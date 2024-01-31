@@ -79,25 +79,22 @@ fn main() {
         "Jeremy Goodwin".to_string(),
     ];
 
-    // print, "There are 5 employees"
-    println!("There are {} employees", employees.len());
-    // print employees
-    for employee in &employees {
-        println!("{}", employee);
-    }
+    loop {
+        // print, "There are n employees"
+        println!("There are {} employees", employees.len());
+        // print employees
+        for employee in &employees {
+            println!("{}", employee);
+        }
 
-    // get remove employee name, "Enter an employee name to remove: "
-    let remove_name: String = get_input("Enter an employee name to remove: ");
-    // remove employee
-    if let Ok(updated_employees) = remove_employee(employees.clone(), remove_name) {
-        employees = updated_employees;
+        loop {
+            // get remove employee name, "Enter an employee name to remove: "
+            let remove_name: String = get_input("Enter an employee name to remove: ");
+            // remove employee
+            match remove_employee(employees.clone(), remove_name) {
+                Ok(updated_employees) => employees = updated_employees,
+                Err(e) => println!("{}", e),
+            }
+        }
     }
-
-    println!("There are {} employees", employees.len());
-    // print employees
-    for employee in &employees {
-        println!("{}", employee);
-    }
-
-    println!("Hello, world!");
 }
