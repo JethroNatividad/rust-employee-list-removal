@@ -8,12 +8,12 @@ use std::io::Write;
 
 fn remove_employee(
     employees: Vec<String>,
-    remove_name: String,
+    remove_name: &String,
 ) -> Result<Vec<String>, &'static str> {
     if employees.contains(&remove_name) {
         Ok(employees
             .iter()
-            .filter(|&x| x != &remove_name)
+            .filter(|&x| x != remove_name)
             .cloned()
             .collect())
     } else {
@@ -36,7 +36,7 @@ mod tests {
         ];
 
         assert_eq!(
-            remove_employee(employees.clone(), "John Smith".to_string()),
+            remove_employee(employees.clone(), &"John Smith".to_string()),
             Ok(vec![
                 "Jackie Jackson".to_string(),
                 "Chris Jones".to_string(),
@@ -46,7 +46,7 @@ mod tests {
         );
 
         assert_eq!(
-            remove_employee(employees, "Nonexistent Employee".to_string()),
+            remove_employee(employees, &"Nonexistent Employee".to_string()),
             Err("Employee not found.")
         );
     }
@@ -91,8 +91,9 @@ fn main() {
             // get remove employee name, "Enter an employee name to remove: "
             let remove_name: String = get_input("Enter an employee name to remove: ");
             // remove employee
-            match remove_employee(employees.clone(), remove_name) {
+            match remove_employee(employees.clone(), &remove_name) {
                 Ok(updated_employees) => {
+                    println!("'{}' removed.", &remove_name);
                     employees = updated_employees;
                     break;
                 }
