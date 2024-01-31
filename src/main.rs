@@ -50,9 +50,20 @@ mod tests {
 }
 fn main() {
     // Initialize employees
+    let employees: Vec<String> = vec![
+        "John Smith".to_string(),
+        "Jackie Jackson".to_string(),
+        "Chris Jones".to_string(),
+        "Amanda Cullen".to_string(),
+        "Jeremy Goodwin".to_string(),
+    ];
 
     // print, "There are 5 employees"
+    println!("There are {} employees", employees.len());
     // print employees
+    for employee in employees {
+        println!("{}", employee);
+    }
 
     // get remove employee name, "Enter an employee name to remove: "
 
