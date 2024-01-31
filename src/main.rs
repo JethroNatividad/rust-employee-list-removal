@@ -3,23 +3,34 @@
 // Process: search in list, remove
 // Outputs: the updated employee list
 
-fn remove_employee(employees: Vec<&str>, remove_name: &str) -> Result<Vec<&str>, &'static str> {}
+fn remove_employee(employees: Vec<String>, remove_name: &str) -> Result<Vec<String>, &'static str> {
+    if employees.contains(&remove_name) {
+        Ok(employees
+            .iter()
+            .filter(|&x| x != &remove_name)
+            .cloned()
+            .collect())
+    } else {
+        Err("String not found in vector")
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn test_remove_employee() {
-        let employees: Vec<&str> = vec![
-            "John Smith",
-            "Jackie Jackson",
-            "Chris Jones",
-            "Amanda Cullen",
-            "Jeremy Goodwin",
+        let employees: Vec<String> = vec![
+            "John Smith".to_string(),
+            "Jackie Jackson".to_string(),
+            "Chris Jones".to_string(),
+            "Amanda Cullen".to_string(),
+            "Jeremy Goodwin".to_string(),
         ];
 
         assert_eq!(
-            remove_employee(employees.clone(), "John Smith"),
+            remove_employee(&employees, "John Smith"),
             vec![
                 "Jackie Jackson",
                 "Chris Jones",
