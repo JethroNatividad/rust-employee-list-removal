@@ -29,5 +29,13 @@ mod tests {
     }
 }
 fn main() {
+    // Initialize employees
+
+    // print, "There are 5 employees"
+    // print employees
+
+    // get remove employee name, "Enter an employee name to remove: "
+
+    // remove employee
     println!("Hello, world!");
 }
