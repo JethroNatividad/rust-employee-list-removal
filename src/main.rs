@@ -3,7 +3,7 @@
 // Process: search in list, remove
 // Outputs: the updated employee list
 
-fn remove_employee(employees: Vec<&str>, remove_name: &str) -> Vec<&str> {}
+fn remove_employee(employees: &mut Vec<&str>, remove_name: &str) -> Result<(), &'static str> {}
 #[cfg(test)]
 mod tests {
     use super::*;
