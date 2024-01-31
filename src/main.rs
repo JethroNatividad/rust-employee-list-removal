@@ -92,7 +92,10 @@ fn main() {
             let remove_name: String = get_input("Enter an employee name to remove: ");
             // remove employee
             match remove_employee(employees.clone(), remove_name) {
-                Ok(updated_employees) => employees = updated_employees,
+                Ok(updated_employees) => {
+                    employees = updated_employees;
+                    break;
+                }
                 Err(e) => println!("{}", e),
             }
         }
