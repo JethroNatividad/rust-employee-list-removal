@@ -71,7 +71,7 @@ fn get_input<T: std::str::FromStr>(prompt: &str) -> T {
 
 fn main() {
     // Initialize employees
-    let employees: Vec<String> = vec![
+    let mut employees: Vec<String> = vec![
         "John Smith".to_string(),
         "Jackie Jackson".to_string(),
         "Chris Jones".to_string(),
@@ -82,12 +82,22 @@ fn main() {
     // print, "There are 5 employees"
     println!("There are {} employees", employees.len());
     // print employees
-    for employee in employees {
+    for employee in &employees {
         println!("{}", employee);
     }
 
     // get remove employee name, "Enter an employee name to remove: "
-
+    let remove_name: String = get_input("Enter an employee name to remove: ");
     // remove employee
+    if let Ok(updated_employees) = remove_employee(employees.clone(), remove_name) {
+        employees = updated_employees;
+    }
+
+    println!("There are {} employees", employees.len());
+    // print employees
+    for employee in &employees {
+        println!("{}", employee);
+    }
+
     println!("Hello, world!");
 }
