@@ -20,7 +20,7 @@ fn remove_employee(
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use super::remove_employee;
 
     #[test]
     fn test_remove_employee() {
